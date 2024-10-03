@@ -1,0 +1,24 @@
+
+ion-card {
+    align-items: center; 
+    background-color: rgb(118, 151, 223); 
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+
+}
+.responsive-img {
+    display: block;      /* Hace que el elemento ion-img se comporte como un bloque */
+    margin: 0 auto;      /* Centra horizontalmente la imagen */
+    width: 100%; /* La imagen ocupará el 100% del ancho del contenedor */
+    height: auto; /* Mantendrá la proporción de la imagen */
+    object-fit: contain;
+  }
+  
+  @media (min-width: 768px) {
+    /* Para pantallas más grandes como tablets y PCs */
+    .responsive-img {
+      width: 40%; /* En pantallas grandes, la imagen será del 50% del ancho */
+    }
+  }
+  

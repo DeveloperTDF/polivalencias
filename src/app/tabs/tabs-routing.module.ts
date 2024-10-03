@@ -8,10 +8,12 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
+        // logo inicio
         path: 'tab1',
         loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
       },
       {
+        // agregar
         path: 'tab2',
         loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
       },
@@ -19,6 +21,21 @@ const routes: Routes = [
         path: 'tab3',
         loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
       },
+      // editar
+      {
+        path: 'editar/:id',
+        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+      },
+      // listar
+      {
+        path: 'tab4',
+        loadChildren: () => import('../tab4/tab4.module').then( m => m.Tab4PageModule)
+      },
+      {
+        path:':id',
+        loadChildren: () => import('../tab2/tab2.module').then( m=> m.Tab2PageModule)
+      },
+     
       {
         path: '',
         redirectTo: '/tabs/tab1',

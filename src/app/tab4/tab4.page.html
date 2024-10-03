@@ -1,0 +1,66 @@
+<ion-content [fullscreen]="true">
+  <form #afiliadoForm="ngForm" (ngSubmit)="onSubmit()">
+    <ion-card>
+      <ion-card-content>
+        <ion-label>Fecha</ion-label>
+        <ion-input
+          type="date"
+          name="fecha"
+          placeholder="ingrese fecha"
+        ></ion-input>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <ion-label>Turno</ion-label>
+        <ion-select 
+          multiple="false" 
+          placeholder="Seleccione turno"
+          name="turno"
+          [(ngModel)]="trabajo.turno"
+          >
+          <ion-select-option value="mañana">mañana</ion-select-option>
+          <ion-select-option value="tarde">tarde</ion-select-option>
+        </ion-select>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <ion-label>Afiliado</ion-label>
+        <ion-select
+          multiple="false"
+          placeholder="Selecione afiliado"
+          name="afiliado"
+          [(ngModel)]="trabajo.nombre"
+        >
+          <ion-select-option *ngFor="let a of afiliadoser"
+            >{{a.nombre}}</ion-select-option
+          >
+        </ion-select>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <ion-label>Tarea</ion-label>
+        <ion-select
+          multiple="false"
+          placeholder="Selecione tarea"
+          name="tarea"
+          [(ngModel)]="trabajo.tarea"
+        >
+          <ion-select-option *ngFor="let a of afiliadoser"
+            >{{a.telefono}}</ion-select-option
+          >
+        </ion-select>
+      </ion-card-content>
+    </ion-card>
+    <ion-button
+      block
+      color="primary"
+      type="submit"
+      [disabled]="!afiliadoForm.form.valid"
+    >
+      Registrar Tarea
+    </ion-button>
+  </form>
+</ion-content>
