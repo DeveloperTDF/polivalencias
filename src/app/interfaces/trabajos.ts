@@ -1,7 +1,7 @@
 
 export interface Trabajo{
 
-    fecha       :   Date;
+    fecha       :   String;
     turno       :   String;
     nombre      :   String;    
     tarea       :   String;

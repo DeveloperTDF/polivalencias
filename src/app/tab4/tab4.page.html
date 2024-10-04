@@ -4,6 +4,7 @@
       <ion-card-content>
         <ion-label>Fecha</ion-label>
         <ion-input
+          [(ngModel)]="trabajo.fecha"
           type="date"
           name="fecha"
           placeholder="ingrese fecha"
@@ -48,8 +49,8 @@
           name="tarea"
           [(ngModel)]="trabajo.tarea"
         >
-          <ion-select-option *ngFor="let a of afiliadoser"
-            >{{a.telefono}}</ion-select-option
+          <ion-select-option *ngFor="let a of tareas"
+            >{{a}}</ion-select-option
           >
         </ion-select>
       </ion-card-content>
@@ -60,7 +61,7 @@
       type="submit"
       [disabled]="!afiliadoForm.form.valid"
     >
-      Registrar Tarea
+      Registrar Trabajo
     </ion-button>
   </form>
 </ion-content>

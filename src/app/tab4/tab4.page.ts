@@ -16,7 +16,7 @@ import { Trabajo } from '../interfaces/trabajos';
 export class Tab4Page implements OnInit {
   
   trabajo:Trabajo = {
-    fecha     : new Date (),
+    fecha     : '',
     turno     : '',
     nombre    : '',    
     tarea     : '',  
@@ -26,6 +26,13 @@ export class Tab4Page implements OnInit {
   //   { fecha: '2024-01-02', nombre: 'candela', tarea:'ir a la calle', estado:'realizado' },
   // ];
   afiliadoser:Afiliado[]=[];
+  tareas:String[]=[
+    "Entregar folletos",
+    "Pegar carteles",
+    "Militar las calles",
+  ];
+  
+  
   
   constructor(private afiliadoservice:AfiliadoServService) { }
 
