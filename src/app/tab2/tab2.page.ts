@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Afiliado } from '../interfaces/afiliado';
-import { AfiliadoServService } from '../afiliado-serv.service';
+import { Operario } from '../interfaces/operario';
+import { OperarioService } from '../operarioservice';
 import { switchMap } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -14,16 +14,16 @@ export class Tab2Page implements OnInit {
   // formulario!: FormGroup;
 
   // esto es lo que estoy agregando
-  afiliado: Afiliado ={
-    fecha:'',
+  operario: Operario ={
+    legajo:'',
     nombre:'',
-    direccion: '',
-    telefono: '',
+    puesto:'',
+    linea:'',
   }
 
   constructor(
     // private formBuilder: FormBuilder,
-    private afiliadoservice:AfiliadoServService,
+    private operarioservice:OperarioService,
     private activateroute: ActivatedRoute,
     private router: Router,
   ) {}
@@ -36,22 +36,22 @@ export class Tab2Page implements OnInit {
     //   telefono: ['', [Validators.required, Validators.minLength(10)]],
     // });
     // esto estoy agregando codigo del backup
-    this.activateroute.params.pipe(switchMap(({id})=>this.afiliadoservice.getAfiliadoPorId(id))
-  ).subscribe(afiliado =>this.afiliado=afiliado);
+    this.activateroute.params.pipe(switchMap(({id})=>this.operarioservice.getOperarioPorId(id))
+  ).subscribe(operario =>this.operario=operario);
 
 
   }
   onSubmit() {
-    if (this.afiliado.nombre.trim().length===0){
+    if (this.operario.nombre.trim().length===0){
       return
     }
     // actualizar
-    if (this.afiliado.id){
-      this.afiliadoservice.actualizarAfiliado( this.afiliado )
-        .subscribe( afiliado => console.log ( 'actualizando', afiliado ))
+    if (this.operario.id){
+      this.operarioservice.actualizarOperario( this.operario )
+        .subscribe( operario => console.log ( 'actualizando', operario ))
         this.router.navigate(['tabs/tab1']); 
     }else{
-      this.afiliadoservice.agregarAfiliado(this.afiliado)
+      this.operarioservice.agregarOperario(this.operario)
       .subscribe(resp=>{
         console.log('respuesta',resp);
         this.router.navigate(['tabs/tab1']); 
@@ -60,15 +60,15 @@ export class Tab2Page implements OnInit {
   }
 
   borrar() {
-    if (!this.afiliado.id) {
+    if (!this.operario.id) {
       return; // No hay cliente para eliminar
     }
     else{
 
-      this.afiliadoservice.eliminarAfiliado(this.afiliado.id!)
+      this.operarioservice.eliminarOperario(this.operario.id!)
       .subscribe(resp => {
         console.log('afiliado eliminado', resp);
-        console.log(`Eliminando afiliado con ID: ${this.afiliado.id}`);
+        console.log(`Eliminando afiliado con ID: ${this.operario.id}`);
 
         this.router.navigate(['tabs/tab1']); // Redirigir después de eliminar
       }, error => {
@@ -77,32 +77,6 @@ export class Tab2Page implements OnInit {
     }
   }
   
-      // crear
-      // if (this.formulario.valid) {
-      //   const { fecha, nombre, direccion, telefono } = this.formulario.value;
-  
-      //   // Crea un objeto con los datos del formulario
-      //   const nuevoAfiliado: Afiliado = {
-      //     fecha,
-      //     nombre,
-      //     direccion,
-      //     telefono,
-      //   };
-      // this.afiliadoservice.agregarAfiliado(nuevoAfiliado)
-      //   .subscribe(resp=>{
-      //     console.log('respuesta',resp);
-      //     this.router.navigate(['afiliado/listado']); 
-      // })
-    // if (this.formulario.valid) {
-    //   const { fecha, nombre, direccion, telefono } = this.formulario.value;
-    //   console.log('fecha:', fecha);
-    //   console.log('nombre:', nombre);
-    //   console.log('direccion:', direccion);
-    //   console.log('telefono: ', telefono);
-
-    //   // Aquí puedes implementar la lógica para iniciar sesión
-    // } else {
-    //   console.log('Formulario inválido');
-    // }
+     
   }
 

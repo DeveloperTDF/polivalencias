@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AfiliadoServService } from '../afiliado-serv.service';
+import { OperarioService } from '../operarioservice';
 
 @Component({
   selector: 'app-tab3',
@@ -10,17 +10,17 @@ export class Tab3Page implements OnInit {
   lista: any[] = [];
   results: any[] = [];
 
-  constructor(private afiliadoService: AfiliadoServService) {}
+  constructor(private operarioService: OperarioService) {}
 
   ngOnInit(): void {
-    this.afiliadoService.getAfiliado().subscribe((lista) => {
+    this.operarioService.getOperario().subscribe((lista) => {
       this.lista = lista;
       this.results = lista;
     });
   }
 
   ionViewWillEnter() {
-    this.afiliadoService.getAfiliado().subscribe((lista) => {
+    this.operarioService.getOperario().subscribe((lista) => {
       this.lista = lista;
       this.results = lista;
     }); // Actualiza la lista de afiliados cada vez que la vista se muestra
