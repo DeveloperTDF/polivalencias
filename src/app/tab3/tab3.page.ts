@@ -28,17 +28,22 @@ export class Tab3Page implements OnInit {
 
 
   handleInput(event: any) {
-    const query = (event.detail.value || '').toLowerCase();
-
-    // Filtrar la lista en base a las propiedades 'nombre'
-    this.results = this.lista.filter((item) =>
-      item.nombre.toLowerCase().includes(query)
-    );
+    const query: string = (event.detail.value || '').toLowerCase().trim();
+  
+    // Dividimos la búsqueda en palabras individuales
+    const terms: string[] = query.split(' ');
+  
+    // Filtramos la lista en base a las propiedades 'nombre', 'legajo' y 'puesto' como lista de cadenas
+    this.results = this.lista.filter((item: any) => {
+      return terms.every((term: string) =>
+        item.legajo.toLowerCase().includes(term) ||
+        item.nombre.toLowerCase().includes(term) ||
+        (item.puesto && Array.isArray(item.puesto) && item.puesto.some((p: string) =>
+          p.toLowerCase().includes(term)
+        ))
+      );
+    });
   }
+  
 }
 
-// public results = [...this.lista];
-// lista = [
-//   { fecha: '2024-01-01', nombre: 'Ejemplo', direccion:'eva perorn 554', telefono:'123456' },
-//   { fecha: '2024-01-02', nombre: 'candela', direccion:'rosale 554', telefono:'987654' },
-// ];

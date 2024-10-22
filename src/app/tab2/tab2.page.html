@@ -1,11 +1,13 @@
+<app-cabecera></app-cabecera>
 <ion-content [fullscreen]="true" class="ion-padding">
-  <form #afiliadoForm="ngForm" (ngSubmit)="onSubmit()">
+  <form #operarioForm="ngForm" (ngSubmit)="onSubmit()">
     <ion-item>
       <ion-label position="stacked"
         >Legajo<ion-text color="danger">*</ion-text></ion-label
       >
       <ion-input
         required
+        placeholder="ingrese legajo"
         [(ngModel)]="operario.legajo"
         name="legajo"
         type="text"
@@ -13,11 +15,12 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating"
+      <ion-label position="stacked"
         >Nombre <ion-text color="danger">*</ion-text></ion-label
       >
       <ion-input
         required
+        placeholder="ingrese nombre del operario"
         [(ngModel)]="operario.nombre"
         name="nombre"
         type="text"
@@ -25,39 +28,37 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating"
+      <ion-label position="stacked"
         >Puesto <ion-text color="danger">*</ion-text></ion-label
       >
-      <ion-input
-        required
+      <ion-select
+        multiple="true"
+        placeholder="seleccione puesto"
         [(ngModel)]="operario.puesto"
-        name="direccion"
-        type="text"
-      ></ion-input>
+        name="puesto"
+      >
+        <ion-select-option *ngFor="let i of puestos" [value]="i"
+          >{{i}}</ion-select-option
+        >
+      </ion-select>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating"
-        >Linea <ion-text color="danger">*</ion-text></ion-label
-      >
-      <ion-input
-        required
-        [(ngModel)]="operario.linea"
-        name="telefono"
-        type="tel"
-      ></ion-input>
-    </ion-item>
+    
+   
 
     <ion-button
       block
       color="primary"
       type="submit"
-      [disabled]="!afiliadoForm.form.valid"
+      [disabled]="!operarioForm.form.valid"
     >
-      Registrar Afiliado
+      Registrar Operario
     </ion-button>
     <ion-button *ngIf="operario.id" color="danger" (click)="borrar()">
       Borrar
     </ion-button>
   </form>
 </ion-content>
+<div>
+  <span>el puesto elegido{{operario.puesto}}</span>
+</div>

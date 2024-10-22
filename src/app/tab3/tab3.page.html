@@ -1,18 +1,64 @@
-<ion-content [fullscreen]="true">
+<app-cabecera></app-cabecera>
+<!-- <ion-content [fullscreen]="true">
 
   <ion-searchbar [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar>
 
-  <ion-card *ngFor="let l of results">
+  <ion-card *ngFor="let op of results">
     <ion-card-content>
-      FECHA: {{l.fecha}} <br />
-      NOMBRE: {{l.nombre}} <br />
-      DIRECCION: {{l.direccion}} <br />
-      TELEFONO: {{l.telefono}} <br />
+      
+      LEGAJO: {{op.legajo}} <br />
+      NOMBRE: {{op.nombre}} <br />
+      PUESTO: {{op.puesto}} <br />
       
     </ion-card-content>
-    <ion-button expand="full" [routerLink]="['/tabs/editar', l.id]">editar</ion-button>
+    <ion-button expand="full" [routerLink]="['/tabs/editar', op.id]">editar</ion-button>
+  </ion-card>
+</ion-content> -->
+<!-- <ion-content [fullscreen]="true">
+  <ion-searchbar [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar>
+
+  <ion-card *ngFor="let op of results">
+    <ion-card-header>
+      <ion-card-title>{{ op.nombre }}</ion-card-title>
+      <ion-card-subtitle>LEGAJO: {{ op.legajo }}</ion-card-subtitle>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <ion-item>
+        <ion-label>
+          <strong>Puesto:</strong> {{ op.puesto }}
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+
+    <ion-button expand="full" [routerLink]="['/tabs/editar', op.id]">Editar</ion-button>
+  </ion-card>
+</ion-content> -->
+<ion-content [fullscreen]="true">
+  <ion-searchbar [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar>
+
+  <ion-card *ngFor="let op of results">
+    <ion-card-header>
+      <ion-card-title>{{ op.nombre }}</ion-card-title>
+      <ion-card-subtitle>LEGAJO: {{ op.legajo }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <strong>Puestos:</strong>
+      <ion-list>
+        <ion-item *ngFor="let puesto of op.puesto">
+          <ion-label>
+            • {{ puesto }}
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+
+    <ion-button expand="full" [routerLink]="['/tabs/editar', op.id]">Editar</ion-button>
   </ion-card>
 </ion-content>
+
+
 
 
 
