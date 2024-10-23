@@ -1,5 +1,5 @@
 {
-    "name": "POLIVALENCIAS json3",
+    "name": "POLIVALENCIAS json5",
     "short_name": "POLIVALENCIAS json3",
     "start_url": "/index.html",
     "display": "standalone",
@@ -13,6 +13,16 @@
       },
       {
         "src": "/icons/icon-large.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/icon.png",
+        "sizes": "196x196",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/icon-large.png",
         "sizes": "512x512",
         "type": "image/png"
       }
