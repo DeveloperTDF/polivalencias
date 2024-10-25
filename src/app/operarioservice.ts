@@ -12,7 +12,7 @@ export class OperarioService {
 
 
   getOperario():Observable<any[]>{
-    return this.http.get<any[]>('http://127.0.0.1:8000/operarios/')
+    return this.http.get<any[]>('http://fapesa.pythonanywhere.com/operarios/')
   }
   getOperarioPorId(id:string):Observable<Operario>{
     return this.http.get<Operario>( ` http://127.0.0.1:8000/operarios/${ id }`);
