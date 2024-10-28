@@ -6,25 +6,57 @@
         >Legajo<ion-text color="danger">*</ion-text></ion-label
       >
       <ion-input
+      required
+      placeholder="Ingrese legajo"
+      [(ngModel)]="operario.legajo"
+      name="legajo"
+      #legajo="ngModel"
+      type="number"
+      pattern="[0-9]*"
+      (input)="validateNumber($event)"
+    ></ion-input>
+      <!-- <ion-input
         required
         placeholder="ingrese legajo"
         [(ngModel)]="operario.legajo"
         name="legajo"
         type="text"
-      ></ion-input>
+      ></ion-input> -->
     </ion-item>
+    <!-- Mensaje de error si el valor ingresado no es numérico -->
+      <!-- Mensaje de error si el valor ingresado no es numérico -->
+    <!-- <div *ngIf="legajo.invalid && legajo.touched">
+      <ion-text color="danger" *ngIf="legajo.errors && legajo.errors['pattern']">
+        Solo se permiten números.
+      </ion-text>
+    </div> -->
 
     <ion-item>
       <ion-label position="stacked"
         >Nombre <ion-text color="danger">*</ion-text></ion-label
       >
       <ion-input
+      required
+      placeholder="Ingrese nombre del operario"
+      [(ngModel)]="operario.nombre"
+      name="nombre"
+      #nombre="ngModel"
+      type="text"
+      (ngModelChange)="validateLetters($event, nombre)"
+    ></ion-input>
+    <!-- Mensaje de error si el valor ingresado contiene algo que no sea letras -->
+  <div *ngIf="nombre.invalid && nombre.touched">
+    <ion-text color="danger" *ngIf="hasNonLetterChars">
+      Solo se permiten letras.
+    </ion-text>
+  </div>
+      <!-- <ion-input
         required
         placeholder="ingrese nombre del operario"
         [(ngModel)]="operario.nombre"
         name="nombre"
         type="text"
-      ></ion-input>
+      ></ion-input> -->
     </ion-item>
 
     <ion-item>

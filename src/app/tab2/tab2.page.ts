@@ -144,6 +144,33 @@ export class Tab2Page implements OnInit {
       });
     }
   }
+  validateNumber(event: any) {
+    const inputValue = event.target.value;
+    
+    // Elimina cualquier carácter no numérico.
+    event.target.value = inputValue.replace(/[^0-9]/g, '');
+  
+    // Si detecta caracteres no numéricos, puedes personalizar un mensaje o manejarlo aquí
+    if (/[^0-9]/.test(inputValue)) {
+      console.log('Se detectaron caracteres no numéricos');
+    }
+  }
+  hasNonLetterChars = false;
+
+  validateLetters(value: string, field: any) {
+    const pattern = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+
+    // Validamos si el valor contiene algo que no sea una letra o un espacio.
+    if (!pattern.test(value)) {
+      this.hasNonLetterChars = true;
+      field.control.setErrors({ pattern: true });
+    } else {
+      this.hasNonLetterChars = false;
+      field.control.setErrors(null); // Limpiamos los errores si todo está bien.
+    }
+  }
+
+  
   
  
 
