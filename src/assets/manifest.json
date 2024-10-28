@@ -1,6 +1,6 @@
 {
-    "name": "POLIVALENCIAS pcjson5",
-    "short_name": "POLIVALENCIAS celularjson5",
+    "name": "POLIVALENCIAS",
+    "short_name": "POLIVALENCIAS",
     "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#ffffff",
