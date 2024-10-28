@@ -12,10 +12,10 @@ export class OperarioService {
 
 
   getOperario():Observable<any[]>{
-    return this.http.get<any[]>('http://fapesa.pythonanywhere.com/operarios/')
+    return this.http.get<any[]>('https://fapesa.pythonanywhere.com/operarios/')
   }
   getOperarioPorId(id:string):Observable<Operario>{
-    return this.http.get<Operario>( ` http://fapesa.pythonanywhere.com/operarios/${ id }`);
+    return this.http.get<Operario>( `http://fapesa.pythonanywhere.com/operarios/${ id }`);
   }
   agregarOperario(operario: Operario):Observable<Operario>{
     return this.http.post<Operario>('http://fapesa.pythonanywhere.com/operarios/',operario );
