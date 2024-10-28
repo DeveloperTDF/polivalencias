@@ -15,16 +15,16 @@ export class OperarioService {
     return this.http.get<any[]>('http://fapesa.pythonanywhere.com/operarios/')
   }
   getOperarioPorId(id:string):Observable<Operario>{
-    return this.http.get<Operario>( ` http://127.0.0.1:8000/operarios/${ id }`);
+    return this.http.get<Operario>( ` http://fapesa.pythonanywhere.com/operarios/${ id }`);
   }
   agregarOperario(operario: Operario):Observable<Operario>{
-    return this.http.post<Operario>('http://127.0.0.1:8000/operarios/',operario );
+    return this.http.post<Operario>('http://fapesa.pythonanywhere.com/operarios/',operario );
   }
   actualizarOperario(operario: Operario):Observable<Operario>{
-    return this.http.put<Operario>(`http://127.0.0.1:8000/operarios/${operario.id}`,operario );
+    return this.http.put<Operario>(`http://fapesa.pythonanywhere.com/operarios/${operario.id}`,operario );
   }
   eliminarOperario(id: string):Observable<any>{
-    return this.http.delete<any>(`http://127.0.0.1:8000/operarios/${id}` );
+    return this.http.delete<any>(`http://fapesa.pythonanywhere.com/operarios/${id}` );
   }
 
 
