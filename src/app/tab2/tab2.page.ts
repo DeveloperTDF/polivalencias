@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Operario } from '../interfaces/operario';
 import { OperarioService } from '../operarioservice';
 import { switchMap } from 'rxjs';
@@ -18,7 +18,7 @@ export class Tab2Page implements OnInit {
     legajo:'',
     nombre:'',
     puesto:'',
-    linea:'',
+    
   }
   puestos: string[] = [
     '19 pulgadas puesto 1a',
@@ -582,6 +582,11 @@ export class Tab2Page implements OnInit {
       field.control.setErrors(null); // Limpiamos los errores si todo está bien.
     }
   }
+  resetForm(form:NgForm) {
+    form.resetForm();
+    this.operario = { legajo: '', nombre: '', puesto: '' }; // Ajusta los valores según las propiedades de tu objeto `operario`
+  }
+  
 
   
   

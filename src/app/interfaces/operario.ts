@@ -3,5 +3,5 @@ export interface Operario {
     legajo      :String;
     nombre      :String;
     puesto      :String;
-    linea       :String;
+    linea?       :String;
 }
